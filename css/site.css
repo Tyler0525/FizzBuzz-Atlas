@@ -72,6 +72,26 @@
       color: var(--tt-light-color)
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      color: var(--tt-dark-color)
+  }
+  .fizz{
+      color: #1881e4;
+
+  }
+  .buzz{
+      color: green
+  }
+  .fizzbuzz{
+      color:purple
+  }
+
+  
   .sticky-footer {
       position: sticky;
       left: 0;
