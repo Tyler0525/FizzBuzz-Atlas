@@ -17,6 +17,7 @@ function getValues2() {
         // generate a list of numbers 
         let numbers = generateNumbers(fizzValue, buzzValue);
         displayNumbers(fbData);
+
     } else {
         Swal.fire({
             icon: 'error',
@@ -27,7 +28,7 @@ function getValues2() {
 }
 
 function generateNumbers(fizzValue, buzzValue) {
-    let nreturnArray = [];
+    let returnArray = [];
     let isFizz = false
     let isBuzz = false
     for (let i = 1; i <= 100; i++) {
@@ -38,15 +39,16 @@ function generateNumbers(fizzValue, buzzValue) {
         isBuzz = index % buzzValue == 0;
         if (isFizz && isBuzz) {
             returnNumbers.push('fizzBuzz');
-        } else if (isStart) {
+        } else if (isFizz) {
             returnNumbers.push('fizz');
-        } else if (isEnd) {
+        } else if (isBuzz) {
             renturnNumbers.push('buzz')
         } else {
             returnNumbers.push(index);
         }
         return returnArray;
     }
+}
 
     //Display the Values to the page 
     function displayData(fbData) {
@@ -60,7 +62,7 @@ function generateNumbers(fizzValue, buzzValue) {
             let dataValue = fbData[i];
             let datatElement = `<div class="col ${dataValue}">${dataValue}</div>`
             content += datatElement;
-
         }
-            //Write the results tot the page
-            contentDiv.innerHTML = content;
+        //Write the results tot the page
+        contentDiv.innerHTML = content
+    }
