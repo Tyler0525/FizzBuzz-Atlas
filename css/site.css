@@ -82,13 +82,16 @@
   }
   .fizz{
       color: #1881e4;
-
+    font-weight: bold
+    ;
   }
   .buzz{
-      color: green
+      color: green;
+      font-weight: bold;
   }
-  .fizzbuzz{
-      color:purple
+  .fizzBuzz{
+      color:purple;
+      font-weight: bold;
   }
 
   
