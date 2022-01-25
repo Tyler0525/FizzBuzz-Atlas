@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>APP NAME: A JS PROJECT</title>
+    <title>FizzBuzz: A JS PROJECT</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,7 @@
 
     <!-- Convert this to an external style sheet -->
 
-    <link rel="icon" type="image/png" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="img/android-chrome-512x512 tt (1).png">
     <link rel="stylesheet" href="css/prism.css">
 
     <link href="css/site.css" rel="stylesheet">
@@ -27,8 +27,8 @@
     <nav class="navbar navbar-expand-md fixed-top navbarBG navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="img/MspectreMark.svg" height="24" class="d-inline-block align-text-top">
-                APP NAME
+                <img src="img/android-chrome-512x512 tt (1).png" height="33" class="d-inline-block align-text-top">
+                FizzBuzz
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,21 +61,143 @@
                 <div class="col-12 col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-js">
-                                function getMessage(){
-// display amesage to the user
-function getMessage() {
+                                // display amesage to the user
 
-let userMessage = document.getElementById("message").value;
-
-Swal.fire({
-icon: 'success',
-title: 'THE APP SAYS',
-userMessage,
-})
-
-console.log("Hello Console Log");
+//Caluculate the payment for the loan
+function calcPayment(amount, rate, term) {
+    return (amount * rate) / (1 - Math.pow(1 + rate, -term));
 }
-                                }
+
+
+//caluctlate the interest for the current balance of the loan 
+function calcInterest(balance, rate) {
+    return balance * rate;
+}
+
+
+//convert rate to a monthly interest rate 
+function calcRate(rate) {
+    return rate = rate / 1200;
+}
+
+function getValues() {
+    let loanAmount = document.getElementById("lamount").value;
+    //months inputed from the user 
+    let loanTerm = document.getElementById("lterm").value;
+    let loanRate = document.getElementById("lrate").value;
+
+    loanAmount = Number(loanAmount);
+    loanTerm = parseInt(loanTerm);
+
+
+    loanRate = parseFloat(loanRate);
+    loanRate = calcRate(loanRate);
+
+    //calculate a payment
+    let payment = calcPayment(loanAmount, loanRate, loanTerm);
+
+    //return a list of payment objects 
+    let payments = getPayments(loanAmount, loanRate, loanTerm, payment);
+
+    displayData(payments, loanAmount, payment);
+
+}
+
+//Build the amorization schedule 
+function getPayments(loanAmount, loanRate, loanTerm, payment) {
+    let paymentsArray = [];
+
+    let balance = loanAmount;
+    let totalInterest = 0;
+    let monthlyPrincipal = 0;
+    let monthlyInterest = 0;
+    let monthlyTotalInterest = 0;
+
+    for (let month = 1; month <= loanTerm; month++) {
+
+        monthlyInterest = calcInterest(balance, loanRate);
+        totalInterest += monthlyInterest;
+        monthlyPrincipal = payment - monthlyInterest;
+        balance = Math.abs(balance - monthlyPrincipal);
+
+        //add the details to an object
+        let curPayment = {
+            month: month,
+            payment: payment,
+            principal: monthlyPrincipal,
+            interest: monthlyInterest,
+            totalInterest: totalInterest,
+            balance: balance
+        };
+        paymentsArray.push(curPayment);
+    }
+
+    return paymentsArray;
+}
+
+//display the data to the user 
+function displayData(payments, loanAmount, payment) {
+
+    let tableBody = document.getElementById("scheduleBody");
+
+    let template = document.getElementById("schedule-Template");
+
+    //clears the table of any previous data 
+    tableBody.innerHTML = "";
+
+    //configure currency formatter
+    let currencyFormatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+
+    for (let i = 0; i < payments.length; i++) {
+
+        let payRow = template.content.cloneNode(true);
+        let payCols = payRow.querySelectorAll("td");
+
+        payCols[0].textContent = payments[i].month;
+        payCols[1].textContent = currencyFormatter.format(payments[i].payment.toFixed(2));
+        payCols[2].textContent = currencyFormatter.format(payments[i].principal.toFixed(2));
+        payCols[3].textContent = currencyFormatter.format(payments[i].interest.toFixed(2));
+        payCols[4].textContent = currencyFormatter.format(payments[i].totalInterest.toFixed(2));
+        payCols[5].textContent = currencyFormatter.format(payments[i].balance.toFixed(2));
+
+        tableBody.appendChild(payRow);
+    }
+    //total Interest is in the last row of the payments array. 
+    let totalInterest = payments[payments.length - 1].totalInterest;
+
+    //calculate the total cost 
+    let totalCost = Number(loanAmount) + totalInterest;
+
+    let totalPrincipal = Number(loanAmount);
+
+    let labelPrincipal = document.getElementById("totalPrincipal");
+    labelPrincipal.innerHTML = Number(totalPrincipal).toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+    });
+
+    let labelInterest = document.getElementById("totalInterest");
+    labelInterest.innerHTML = Number(totalInterest).toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+    });
+
+    let labelPayment = document.getElementById("payment");
+    labelPayment.innerHTML = Number(payment).toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+    });
+
+    let labelTotalCost = document.getElementById("totalPayments");
+    labelTotalCost.innerHTML = Number(totalCost).toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+    });
+
+}
                             </code>
                         </pre>
 
@@ -100,7 +222,8 @@ console.log("Hello Console Log");
                         </div>
                     </div>
                     <div class="col d-flex align-items center justify-content-start justify-content-lg-center">
-                        <img src="img/MarkSpectre_WhtLogo.svg" alt="mark spectre" height="24">
+                        <img src="img/android-chrome-512x512 tt (1).png" alt="tt" height="35">
+                        <img src="img/Tyler (4) (1).png" alt="tyler taylor" height="33">
                     </div>
                     <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                         <div class="row">
