@@ -5,16 +5,31 @@
       --tt-secondary-color: #ff993b;
   }
 
+  body {
+      background-color: black ;
+  }
+
   main>.container {
       padding: 60px 15px 0;
       margin-bottom: 5rem;
-      min-height:90vh;
+      min-height: 90vh;
   }
 
-
+  main{
+      color:rgb(0, 222, 252) !important;
+  }
+ 
   /*-- Navbar Styles --*/
   .navbarBG {
-      background-color: var(--tt-dark-color);
+      background-color:rgb(0, 0, 0);
+  }
+
+  a.navbar-brand{
+      color:rgb(0, 222, 252) !important;
+  }
+
+  a.nav-link{
+      color: rgb(0, 222, 252) !important;
   }
 
   .jsicon {
@@ -35,25 +50,26 @@
   }
 
   .checklisticon {
-      color: var(--tt-secondary-color)
+      color: rgb(216, 216, 29)
   }
 
   .btn-outline-primary {
-      color: var(--tt-dark-color);
-      border-color: var(--tt-secondary-color) !important;
+      color: rgb(0, 222, 252) !important;
+      border-color: black !important;
   }
 
   .btn-outline-primary:hover,
   .btn-outline-primary:active,
   .btn-oultine-primary:focus {
-      border-color: var(--tt-primary-color);
-      background-color: var(--tt-secondary-color);
+      border-color: black;
+      background-color: rgb(0, 222, 252) !important;
+   
   }
 
   .btn-primary {
-      color: white !important;
-      background-color: var(--tt-secondary-color) !important;
-      border-color: var(--tt-secondary-color)
+      color:black !important;
+      background-color: rgb(0, 222, 252) !important;
+      border-color: black
   }
 
   .btn-primary:hover,
@@ -61,15 +77,15 @@
   .btn-primary:visited,
   .btn-primary:focus {
       filter: brightness(1.1) !important;
-      border-color:var(--tt-secondary-color)
+      border-color: black
   }
 
 
   /*-- Footer Styles --*/
   .footer {
-      background-color: var(--tt-dark-color);
+      background-color: black;
       padding-right: 1rem;
-      color: var(--tt-light-color)
+      color: rgb(0, 222, 252) !important;
   }
 
   h1,
@@ -80,21 +96,23 @@
   h6 {
       color: var(--tt-dark-color)
   }
-  .fizz{
+
+  .fizz {
       color: #1881e4;
-    font-weight: bold
-    ;
-  }
-  .buzz{
-      color: green;
-      font-weight: bold;
-  }
-  .fizzBuzz{
-      color:purple;
       font-weight: bold;
   }
 
-  
+  .buzz {
+      color: green;
+      font-weight: bold;
+  }
+
+  .fizzBuzz {
+      color: purple;
+      font-weight: bold;
+  }
+
+
   .sticky-footer {
       position: sticky;
       left: 0;
@@ -103,7 +121,8 @@
   }
 
   footer .social>a {
-      color: var(--tt-light-color);
+      color: rgb(0, 222, 252) !important;
+      
       opacity: .75;
   }
 

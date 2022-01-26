@@ -16,53 +16,53 @@ function getValues2() {
     if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {
         // generate a list of numbers 
         let numbers = generateNumbers(fizzValue, buzzValue);
-        displayNumbers(fbData);
+        displayData(fbData);
 
     } else {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Only Intergers are allowed for BuzzFizz'
+            text: 'Only Intergers are allowed for FizzBuzz'
         })
     }
 }
 
-function generateNumbers(fizzValue, buzzValue) {
+function generateNumbers(fizzValue, buzzValue, fizzValue) {
     let returnArray = [];
     let isFizz = false
     let isBuzz = false
     for (let i = 1; i <= 100; i++) {
 
 
-        // fizzValue = 3 
-        isFizz = index % fizzValue == 0;
-        isBuzz = index % buzzValue == 0;
+        fizzValue = 3
+        buzzValue = 5
+        isFizz = i % fizzValue == 0;
+        isBuzz = i % buzzValue == 0;
         if (isFizz && isBuzz) {
-            returnNumbers.push('fizzBuzz');
+            generateNumbers.push('fizzBuzz');
         } else if (isFizz) {
-            returnNumbers.push('fizz');
+            generateNumbers.push('fizz');
         } else if (isBuzz) {
-            renturnNumbers.push('buzz')
-        } else {
-            returnNumbers.push(index);
+            generateNumbers.push('buzz')
+        } {
+            return returnArray;
         }
-        return returnArray;
     }
 }
 
-    //Display the Values to the page 
-    function displayData(fbData) {
-        let contentDiv = document.getElementById("results");
-        let content = "";
+//Display the Values to the page 
+function displayData(fbData) {
+    let contentDiv = document.getElementById("results");
+    let content = "";
 
-        // Clear previous Data 
-        contentDiv.innerHTML = "";
+    // Clear previous Data 
+    contentDiv.innerHTML = "";
 
-        for (let i = 0; i < fbData.length; i++) {
-            let dataValue = fbData[i];
-            let datatElement = `<div class="col ${dataValue}">${dataValue}</div>`
-            content += datatElement;
-        }
-        //Write the results tot the page
-        contentDiv.innerHTML = content
+    for (let i = 0; i < fbData.length; i++) {
+        let dataValue = fbData[i];
+        let datatElement = `<div class="col ${dataValue}">${dataValue}</div>`
+        content += datatElement;
     }
+    //Write the results tot the page
+    contentDiv.innerHTML = content
+}
