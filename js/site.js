@@ -16,7 +16,7 @@ function getValues2() {
     if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {
         // generate a list of numbers 
         let numbers = generateNumbers(fizzValue, buzzValue);
-        displayData(fbData);
+        displayData(generateNumbers);
 
     } else {
         Swal.fire({
