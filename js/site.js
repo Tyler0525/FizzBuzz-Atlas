@@ -16,7 +16,7 @@ function getValues2() {
     if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {
         // generate a list of numbers 
         let numbers = generateNumbers(fizzValue, buzzValue);
-        displayData(generateNumbers);
+        displayData(numbers);
 
     } else {
         Swal.fire({
@@ -27,27 +27,29 @@ function getValues2() {
     }
 }
 
-function generateNumbers(fizzValue, buzzValue, fizzValue) {
+function generateNumbers(fizzValue, buzzValue) {
     let returnArray = [];
     let isFizz = false
     let isBuzz = false
     for (let i = 1; i <= 100; i++) {
 
 
-        fizzValue = 3
-        buzzValue = 5
+        // fizzValue = 3
+        // buzzValue = 5
         isFizz = i % fizzValue == 0;
         isBuzz = i % buzzValue == 0;
         if (isFizz && isBuzz) {
-            generateNumbers.push('fizzBuzz');
+            returnArray.push('fizzBuzz');
         } else if (isFizz) {
-            generateNumbers.push('fizz');
+            returnArray.push('fizz');
         } else if (isBuzz) {
-            generateNumbers.push('buzz')
-        } {
-            return returnArray;
+            returnArray.push('buzz');
+        } else
+         {
+            returnArray.push(`${i}`);
         }
     }
+    return returnArray;
 }
 
 //Display the Values to the page 
