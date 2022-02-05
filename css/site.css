@@ -98,17 +98,17 @@
   }
 
   .fizz {
-      color: #1881e4;
-      font-weight: bold;
-  }
-
-  .buzz {
       color: green;
       font-weight: bold;
   }
 
+  .buzz {
+      color:red;
+      font-weight: bold;
+  }
+
   .fizzBuzz {
-      color: purple;
+      color: goldenrod;
       font-weight: bold;
   }
 
